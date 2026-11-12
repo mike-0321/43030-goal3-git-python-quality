@@ -1,4 +1,4 @@
-"""Start an interactive loopback-only API after running run_demo.py."""
+"""Start an interactive loopback-only API after training the model."""
 import os
 from pathlib import Path
 import secrets
@@ -6,7 +6,7 @@ import socket
 
 ROOT = Path(__file__).resolve().parent
 if not (ROOT / 'artifacts/manifest.json').exists():
-    raise SystemExit('First run: .venv/bin/python run_demo.py')
+    raise SystemExit('First run: .venv/bin/python -m learning_service.train')
 os.environ.pop('LAB_ARTIFACT_DIR', None)
 key = secrets.token_urlsafe(24)
 os.environ['LAB_API_KEY'] = key
